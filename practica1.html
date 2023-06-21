@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica 1 - Ejercicio 1</title>
+    <link rel="icon" type="image/png" href="wulf.png" sizes="32x32">
+    <style type="text/css">
+        #titulo,
+        #descripcion {
+            text-align: center;
+        }
+
+        #contenedor-origen {
+            border: 1px solid gray;
+            height: 200px;
+            margin: 0 auto;
+            width: 400px;
+        }
+
+        .elemento {
+            background: lightblue;
+            border: 1px solid darkblue;
+            color: darkblue;
+            cursor: pointer;
+            display: inline-block;
+            margin: 5px 10px;
+            padding: 5px;
+        }
+
+        #contenedor-destino {
+            border: 1px solid gray;
+            border-spacing: 0px;
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+
+        #contenedor-destino td {
+            border: 1px solid gray;
+            height: 50px;
+            text-align: center;
+            width: 200px;
+        }
+    </style>
+
+    <script>
+        // Cuando se empieza a arrastar
+        function drag(event) {
+            event.dataTransfer.setData("id", event.target.id);
+            event.dataTransfer.setData("valor", event.target.dataset.valor)
+        }
+        // Cuando se está arrastrando
+        function allowDrop(event) {
+            event.preventDefault();
+        }
+        // Cuando se deja de arrastrar
+        function drop(event) {
+            event.preventDefault();
+
+            var elementId = event.dataTransfer.getData("valor");
+            if (event.target.dataset.valor == elementId) {
+                var elementId = event.dataTransfer.getData("id");
+                event.target.appendChild(document.getElementById(elementId));
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+    <div class="contenido">
+        <h1>Drag and Drop</h1>
+        <p>Ubique los elementos correspondientes en la celda correspondiente</p>
+        <br />
+
+        <h3>Contenedor origen:</h3>
+        <div id="contenedor-origen">
+            <span id="o11" class="elemento" data-valor="11" draggable="true" ondragstart="drag(event)">Celda 11</span>
+            <span id="o12" class="elemento" data-valor="12" draggable="true" ondragstart="drag(event)">Celda 12</span>
+            <span id="o13" class="elemento" data-valor="13" draggable="true" ondragstart="drag(event)">Celda 13</span>
+            <span id="o21" class="elemento" data-valor="21" draggable="true" ondragstart="drag(event)">Celda 21</span>
+            <span id="o22" class="elemento" data-valor="22" draggable="true" ondragstart="drag(event)">Celda 22</span>
+            <span id="o23" class="elemento" data-valor="23" draggable="true" ondragstart="drag(event)">Celda 23</span>
+            <span id="o31" class="elemento" data-valor="31" draggable="true" ondragstart="drag(event)">Celda 31</span>
+            <span id="o32" class="elemento" data-valor="32" draggable="true" ondragstart="drag(event)">Celda 32</span>
+            <span id="o33" class="elemento" data-valor="33" draggable="true" ondragstart="drag(event)">Celda 33</span>
+
+        </div>
+
+
+        <h3>Contenedor destino:</h3>
+        <table id="contenedor-destino">
+            <tr>
+                <td id="d11" data-valor="11" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                <td id="d12" data-valor="12" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                <td id="d13" data-valor="13" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+            </tr>
+            <tr>
+                <td id="d21" data-valor="21" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                <td id="d22" data-valor="22" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                <td id="d23" data-valor="23" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+            </tr>
+            <tr>
+                <td id="d31" data-valor="31" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                <td id="d32" data-valor="32" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                <td id="d33" data-valor="33" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>

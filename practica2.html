@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica 1 - Ejercicio 4</title>
+    <link rel="icon" type="image/png" href="wulf.png" sizes="32x32">
+    <link rel="stylesheet" href="styles.css">
+    <script src="java.js"></script>
+
+</head>
+
+<body>
+    <h1> Practica numero 4</h1>
+    <p> Construya un juego de puzzle de 4 piezas.</p>
+
+    <div class="tablas">
+        <div class="medio">
+            <table class="tabla-imagen">
+                <tr>
+                    <td><img id="i1" src="puzzle/w4.jpg" data-valor="4" draggable="true" ondragstart="drag(event)"></td>
+                    <td><img id="i2" src="puzzle/w2.jpg" data-valor="2" draggable="true" ondragstart="drag(event)"></td>
+                </tr>
+                <tr>
+                    <td><img id="i3" src="puzzle/w1.jpg" data-valor="1" draggable="true" ondragstart="drag(event)"></td>
+                    <td><img id="i4" src="puzzle/w3.jpg" data-valor="3" draggable="true" ondragstart="drag(event)"></td>
+                </tr>
+            </table>
+
+            <table class="tabla-destino">
+                <tr>
+                    <td id="d1" data-valor="1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                    <td id="d2" data-valor="2" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                </tr>
+                <tr>
+                    <td id="d3" data-valor="3" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                    <td id="d4" data-valor="4" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>
